@@ -6,7 +6,7 @@ if (!empty($_POST['type'])){
    
     $type= $_POST['type']; 
     
-    $sql_statement = "SELECT * FROM users WHERE  type = '$type'";
+    $sql_statement = "SELECT * FROM events WHERE  type = '$type'";
     $result = mysqli_query($db, $sql_statement);
     
 } 
@@ -16,12 +16,13 @@ else
 }
 
 while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-    $uid = $row['uid'];
+    $eid = $row['eid'];
     $name = $row['name']; 
-    $email = $row['email']; 
-    $phone = $row['phone']; 
-    $type = $row['type']; 
-    echo $uid . " " . $name . " " . $type . "<br>"; 
+    $type = $row['type'];
+    $price = $row['price']; 
+    $capacity = $row['capacity']; 
+    $date = $row['date']; 
+    echo $eid . " " . $name . " " . $price . "<br>"; 
 } 
 
 ?>
