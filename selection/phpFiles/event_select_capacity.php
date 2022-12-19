@@ -8,7 +8,7 @@ if (!empty($_POST['capacity'])){
    
     $price = $_POST['capacity']; 
     
-    $sql_statement = "SELECT * FROM events  WHERE  capacity < $capacity";
+    $sql_statement = "SELECT * FROM events  WHERE  capacity > $capacity";
     $result = mysqli_query($db, $sql_statement);
     
 } 
