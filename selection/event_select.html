@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../form.css" />
+  </head>
+  <body>
+    <h2>Filter Event by Price</h2>
+    <div class="whole-form">
+      <form action="phpFiles/event_select_price.php" method="POST">
+        <div class="input-label">Event price less than:</div>
+        <input class="inpt" type="text" id="price" name="price" />
+      </form>
+    </div>
+    <div class="whole-form">
+      <h2>Filter Event by Capacity</h2>
+      <form action="phpFiles/event_select_capacity.php" method="POST">
+        <div class="input-label">Workshop price less than:</div>
+        <input class="inpt" type="text" id="capacity" name="capacity" />
+      </form>
+    </div>
+  </body>
+</html>
