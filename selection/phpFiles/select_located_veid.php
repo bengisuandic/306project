@@ -2,11 +2,11 @@
 include "../../config1.php"; // Makes mysql connection
 
 
-if (!empty($_POST['wid'])){ 
+if (!empty($_POST['veid'])){ 
    
-    $wid = $_POST['wid']; 
+    $veid = $_POST['veid']; 
     
-    $sql_statement = "SELECT * FROM conducts WHERE  wid = $wid";
+    $sql_statement = "SELECT * FROM located WHERE  veid = $veid";
     $result = mysqli_query($db, $sql_statement);
     
 } 
@@ -18,9 +18,9 @@ else
 if($result)
 {
     while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $wid = $row['wid'];
-        $tid = $row['tid']; 
-        echo $tid . " " . $wid . "<br>"; 
+        $veid = $row['veid'];
+        $wid = $row['wid']; 
+        echo $wid . " " . $veid . "<br>"; 
     } 
 }
 

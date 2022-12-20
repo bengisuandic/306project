@@ -4,7 +4,7 @@ include "../../config1.php"; // Makes mysql connection
 
 if (!empty($_POST['tid'])){ 
    
-    $profession= $_POST['tid']; 
+    $tid= $_POST['tid']; 
     
     $sql_statement = "SELECT * FROM conducts WHERE  tid = $tid";
     $result = mysqli_query($db, $sql_statement);

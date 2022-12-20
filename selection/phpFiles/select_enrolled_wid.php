@@ -6,7 +6,7 @@ if (!empty($_POST['wid'])){
    
     $wid = $_POST['wid']; 
     
-    $sql_statement = "SELECT * FROM conducts WHERE  wid = $wid";
+    $sql_statement = "SELECT * FROM enrolled WHERE  wid = $wid";
     $result = mysqli_query($db, $sql_statement);
     
 } 
@@ -19,8 +19,8 @@ if($result)
 {
     while($row = mysqli_fetch_assoc($result)) { // Iterating the result
         $wid = $row['wid'];
-        $tid = $row['tid']; 
-        echo $tid . " " . $wid . "<br>"; 
+        $uid = $row['uid']; 
+        echo $uid . " " . $wid . "<br>"; 
     } 
 }
 

@@ -57,3 +57,15 @@ a:active {
 a{
   color: azure;
 }
+
+.select-button{
+  margin: 2%;
+  
+
+}
+
+.select-menu{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
