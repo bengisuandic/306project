@@ -3,8 +3,8 @@
 include "config1.php"; 
 
 if (!empty($_POST['eid'])){ 
-    $wid = $_POST['eid']; 
-    $uid= $_POST['fid']; 
+    $eid = $_POST['eid']; 
+    $fid= $_POST['fid']; 
 
     
 

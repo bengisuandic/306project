@@ -4,7 +4,7 @@ include "config1.php";
 
 if (!empty($_POST['wid'])){ 
     $wid = $_POST['wid']; 
-    $uid= $_POST['tid']; 
+    $tid= $_POST['tid']; 
 
     
 

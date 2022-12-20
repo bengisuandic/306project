@@ -3,10 +3,8 @@
 include "config1.php"; 
 
 if (!empty($_POST['veid'])){ 
-    $wid = $_POST['veid']; 
-    $uid= $_POST['wid']; 
-
-    
+    $veid = $_POST['veid']; 
+    $wid= $_POST['wid']; 
 
     $sql_statement = "INSERT INTO located(veid, wid) VALUES ($veid,$wid)"; 
 
