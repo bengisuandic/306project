@@ -6,7 +6,7 @@ if (!empty($_POST['name'])){
    
     $name= $_POST['name']; 
     
-    $sql_statement = "SELECT * FROM videos WHERE  name = '$name'";
+    $sql_statement = "SELECT * FROM venues WHERE  name = '$name'";
     $result = mysqli_query($db, $sql_statement);
     
 } 
@@ -18,11 +18,11 @@ else
 if($result)
 {
     while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $viid = $row['viid'];
+        $veid = $row['veid'];
         $name = $row['name']; 
-        $link = $row['link']; 
-        $description = $row['description']; 
-        echo $viid . " " . $name . " " . $link . "<br>"; 
+        $mobile = $row['mobile']; 
+        $address = $row['address']; 
+        echo $veid . " " . $name . " " . $address . "<br>"; 
 } 
 }
 ?>
