@@ -30,17 +30,40 @@ include "../config1.php";
 </style>
 
 <form class="whole-form" action="deleteEnrolled.php" method="POST">
-<select class="dropdown-menu" name="ids">
+    <h3>Workshop ID:</h3>
+<select class="dropdown-menu" name="wid">
 
 <?php
 
-$sql_command = "SELECT uid, wid FROM enrolled";
+$sql_command = "SELECT  wid FROM enrolled";
 
 $myresult = mysqli_query($db, $sql_command);
 
     while($id_rows = mysqli_fetch_assoc($myresult))
     {
         $wid = $id_rows['wid'];
+     
+        
+        
+       
+        echo "<option value=$wid>". $wid .  "</option>";
+    }
+
+?>
+
+</select>
+<h3>User ID:</h3>
+<select class="dropdown-menu" name="uid">
+
+<?php
+
+$sql_command = "SELECT uid FROM enrolled";
+
+$myresult = mysqli_query($db, $sql_command);
+
+    while($id_rows = mysqli_fetch_assoc($myresult))
+    {
+        
         $uid = $id_rows['uid'];
         
         
