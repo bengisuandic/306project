@@ -1,6 +1,6 @@
 <?php 
 
-include "config1.php"; 
+include "../../config1.php"; 
 
 if (!empty($_POST['eid'])){ 
     $eid = $_POST['eid']; 
