@@ -19,7 +19,7 @@ while($row = mysqli_fetch_assoc($result)) { // Iterating the result
     $uid = $row['uid'];
     $name = $row['name']; 
     $email = $row['email']; 
-    $phone = $row['phone']; 
+    $mobile = $row['mobile']; 
     $type = $row['type']; 
     echo $uid . " " . $name . " " . $type . "<br>"; 
 } 

@@ -5,10 +5,10 @@ include "../../config1.php";
 if (!empty($_POST['name'])){ 
     $name = $_POST['name']; 
     $address = $_POST['address']; 
-    $phone = $_POST['phone']; 
+    $mobile = $_POST['mobile']; 
     
 
-    $sql_statement = "INSERT INTO venues(name, phone,address ) VALUES ('$name',$phone ,'$address')"; 
+    $sql_statement = "INSERT INTO venues(name, mobile,address ) VALUES ('$name',$mobile ,'$address')"; 
 
     $result = mysqli_query($db, $sql_statement);
     echo "Your result is: " . $result;

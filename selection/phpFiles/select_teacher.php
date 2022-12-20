@@ -21,7 +21,7 @@ if($result)
         $tid = $row['tid'];
         $name = $row['name']; 
         $email = $row['email']; 
-        $phone = $row['phone']; 
+        $mobile = $row['mobile']; 
         $profession = $row['profession']; 
         echo $tid . " " . $name . " " . $profession . "<br>"; 
 } 
