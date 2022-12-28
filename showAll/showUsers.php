@@ -31,7 +31,7 @@ include "../config1.php"; // Makes mysql connection
 
 
 
-$sql_statement = "SELECT * FROM users'";
+$sql_statement = "SELECT * FROM users";
 $result = mysqli_query($db, $sql_statement);
 
 
