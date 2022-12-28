@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   height: 20px
@@ -80,5 +81,12 @@ a{
 
 .body-bg{
   margin: 0;
-  background: url("cute-abstract-modern-background-free-vector.webp");
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  
+  min-width: 100%;
+  min-height: 100%;
+
+  background: url("resources/cute-abstract-modern-background-free-vector.webp");
 }
