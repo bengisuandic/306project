@@ -34,20 +34,21 @@ if (!empty($_POST['type'])){
     
     $sql_statement = "SELECT * FROM users WHERE  type = '$type'";
     $result = mysqli_query($db, $sql_statement);
-    
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
 
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Type</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $uid = $row['uid'];
-        $name = $row['name']; 
-        $email = $row['email']; 
-        $mobile = $row['mobile']; 
-        $type = $row['type']; 
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$uid</td><td>$name</td><td>$email</td><td>$mobile</td><td>$type</td></tr>\n";
-    } 
-    echo "</table>";
-        
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Type</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $uid = $row['uid'];
+            $name = $row['name'];
+            $email = $row['email'];
+            $mobile = $row['mobile'];
+            $type = $row['type'];
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$uid</td><td>$name</td><td>$email</td><td>$mobile</td><td>$type</td></tr>\n";
+        }
+        echo "</table>";
+    }  
 } 
 else 
 {

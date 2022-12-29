@@ -34,20 +34,21 @@ if (!empty($_POST['profession'])){
     
     $sql_statement = "SELECT * FROM teachers WHERE  profession = '$profession'";
     $result = mysqli_query($db, $sql_statement);
-
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Profession</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $tid = $row['tid'];
-        $name = $row['name']; 
-        $email = $row['email']; 
-        $mobile = $row['mobile']; 
-        $profession = $row['profession']; 
-        //echo $eid . " " . $name . " " . $price . "<br>"; 
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$tid</td><td>$name</td><td>$email</td><td>$mobile</td><td>$profession</td></tr>\n";
-    } 
-    echo "</table>";
-        
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Profession</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $tid = $row['tid'];
+            $name = $row['name'];
+            $email = $row['email'];
+            $mobile = $row['mobile'];
+            $profession = $row['profession'];
+            //echo $eid . " " . $name . " " . $price . "<br>"; 
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$tid</td><td>$name</td><td>$email</td><td>$mobile</td><td>$profession</td></tr>\n";
+        }
+        echo "</table>";
+    }
 } 
 else 
 {

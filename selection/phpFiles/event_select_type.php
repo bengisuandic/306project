@@ -34,21 +34,22 @@ if (!empty($_POST['type'])){
     
     $sql_statement = "SELECT * FROM events WHERE  type = '$type'";
     $result = mysqli_query($db, $sql_statement);
-
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Name</th><th>Price</th><th>Capacity</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $eid = $row['eid'];
-        $name = $row['name']; 
-        $type = $row['type'];
-        $price = $row['price']; 
-        $capacity = $row['capacity']; 
-        $date = $row['date']; 
-        //echo $eid . " " . $name . " " . $price . "<br>"; 
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$eid</td><td>$name</td><td>$price</td><td>$capacity</td></tr>\n";
-    } 
-    echo "</table>";
-        
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Price</th><th>Capacity</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $eid = $row['eid'];
+            $name = $row['name'];
+            $type = $row['type'];
+            $price = $row['price'];
+            $capacity = $row['capacity'];
+            $date = $row['date'];
+            //echo $eid . " " . $name . " " . $price . "<br>"; 
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$eid</td><td>$name</td><td>$price</td><td>$capacity</td></tr>\n";
+        }
+        echo "</table>";
+    }
 } 
 else 
 {

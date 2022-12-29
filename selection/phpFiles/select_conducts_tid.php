@@ -35,17 +35,19 @@ if (!empty($_POST['tid'])){
     $sql_statement = "SELECT * FROM conducts WHERE  tid = $tid";
     $result = mysqli_query($db, $sql_statement);
     
-    echo "<table>";
-    echo "<tr><th>Teacher ID</th><th>Worksop ID</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $wid = $row['wid'];
-        $tid = $row['tid']; 
-    
-        //echo $eid . " " . $name . " " . $price . "<br>"; 
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$tid</td><td>$wid</td></tr>\n";
-    } 
-    echo "</table>";
-        
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
+        echo "<table>";
+        echo "<tr><th>Teacher ID</th><th>Worksop ID</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $wid = $row['wid'];
+            $tid = $row['tid'];
+
+            //echo $eid . " " . $name . " " . $price . "<br>"; 
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$tid</td><td>$wid</td></tr>\n";
+        }
+        echo "</table>";
+    }
 } 
 else 
 {

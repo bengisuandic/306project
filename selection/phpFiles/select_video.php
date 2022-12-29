@@ -34,18 +34,19 @@ if (!empty($_POST['name'])){
     
     $sql_statement = "SELECT * FROM videos WHERE  name = '$name'";
     $result = mysqli_query($db, $sql_statement);
-
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Name</th><th>Link</th><th>Description</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $viid = $row['viid'];
-        $name = $row['name']; 
-        $link = $row['link']; 
-        $description = $row['description']; 
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$viid</td><td>$name</td><td>$link</td><td>$description</td></tr>\n";
-    } 
-    echo "</table>";
-        
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Link</th><th>Description</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $viid = $row['viid'];
+            $name = $row['name'];
+            $link = $row['link'];
+            $description = $row['description'];
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$viid</td><td>$name</td><td>$link</td><td>$description</td></tr>\n";
+        }
+        echo "</table>";
+    }
 } 
 else 
 {

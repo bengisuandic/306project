@@ -35,18 +35,19 @@ if (!empty($_POST['name'])){
     $sql_statement = "SELECT * FROM food_types WHERE  name = '$name'";
     $result = mysqli_query($db, $sql_statement);
     
-    
-    echo "<table>";
-    echo "<tr><th>Food Type ID</th><th>Name</th><th>Description</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $fid = $row['fid'];
-        $name = $row['name']; 
-        $description = $row['description']; 
-    
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$fid</td><td>$name</td><td>$description</td></tr>\n";
-    } 
-    echo "</table>";
-        
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
+        echo "<table>";
+        echo "<tr><th>Food Type ID</th><th>Name</th><th>Description</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $fid = $row['fid'];
+            $name = $row['name'];
+            $description = $row['description'];
+
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$fid</td><td>$name</td><td>$description</td></tr>\n";
+        }
+        echo "</table>";
+    }
 } 
 else 
 {

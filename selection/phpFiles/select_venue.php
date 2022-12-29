@@ -34,18 +34,19 @@ if (!empty($_POST['name'])){
     
     $sql_statement = "SELECT * FROM venues WHERE  name = '$name'";
     $result = mysqli_query($db, $sql_statement);
-
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Name</th><th>Phone</th><th>Address</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $veid = $row['veid'];
-        $name = $row['name']; 
-        $mobile = $row['mobile']; 
-        $address = $row['address']; 
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$veid</td><td>$name</td><td>$mobile</td><td>$address</td></tr>\n";
-    } 
-    echo "</table>";
-        
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Phone</th><th>Address</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $veid = $row['veid'];
+            $name = $row['name'];
+            $mobile = $row['mobile'];
+            $address = $row['address'];
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$veid</td><td>$name</td><td>$mobile</td><td>$address</td></tr>\n";
+        }
+        echo "</table>";
+    }
 } 
 else 
 {

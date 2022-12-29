@@ -34,20 +34,21 @@ if (!empty($_POST['price'])){
     
     $sql_statement = "SELECT * FROM pro_trainings WHERE  price < $price";
     $result = mysqli_query($db, $sql_statement);
-    
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Name</th><th>Price</th><th>Capacity</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $pid = $row['pid'];
-        $name = $row['name']; 
-        $price = $row['price']; 
-        $capacity = $row['capacity']; 
-        $date = $row['date']; 
-        //echo $eid . " " . $name . " " . $price . "<br>"; 
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$pid</td><td>$name</td><td>$price</td><td>$capacity</td></tr>\n";
-    } 
-    echo "</table>";
-        
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Price</th><th>Capacity</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $pid = $row['pid'];
+            $name = $row['name'];
+            $price = $row['price'];
+            $capacity = $row['capacity'];
+            $date = $row['date'];
+            //echo $eid . " " . $name . " " . $price . "<br>"; 
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$pid</td><td>$name</td><td>$price</td><td>$capacity</td></tr>\n";
+        }
+        echo "</table>";
+    }
 } 
 else 
 {

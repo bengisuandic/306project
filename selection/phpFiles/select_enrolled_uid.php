@@ -34,18 +34,19 @@ if (!empty($_POST['uid'])){
     
     $sql_statement = "SELECT * FROM enrolled WHERE  uid = $uid";
     $result = mysqli_query($db, $sql_statement);
-    
-    echo "<table>";
-    echo "<tr><th>User ID</th><th>Worksop ID</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $wid = $row['wid'];
-        $uid = $row['uid']; 
-    
-        //echo $eid . " " . $name . " " . $price . "<br>"; 
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$uid</td><td>$wid</td></tr>\n";
-    } 
-    echo "</table>";
-        
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
+        echo "<table>";
+        echo "<tr><th>User ID</th><th>Worksop ID</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $wid = $row['wid'];
+            $uid = $row['uid'];
+
+            //echo $eid . " " . $name . " " . $price . "<br>"; 
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$uid</td><td>$wid</td></tr>\n";
+        }
+        echo "</table>";
+    }
 } 
 else 
 {

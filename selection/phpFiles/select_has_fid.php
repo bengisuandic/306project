@@ -34,18 +34,19 @@ if (!empty($_POST['fid'])){
     
     $sql_statement = "SELECT * FROM has WHERE  fid = $fid";
     $result = mysqli_query($db, $sql_statement);
-    
-    echo "<table>";
-    echo "<tr><th>Event ID</th><th>Food Type ID</th></tr>";
-    while($row = mysqli_fetch_assoc($result)) { // Iterating the result
-        $eid = $row['eid'];
-        $fid = $row['fid']; 
-    
-        //echo $eid . " " . $name . " " . $price . "<br>"; 
-        echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$eid</td><td>$fid</td></tr>\n";
-    } 
-    echo "</table>";
-        
+    if (mysqli_num_rows($result)  < 1) {
+        echo "No results, sorry..";} else {
+        echo "<table>";
+        echo "<tr><th>Event ID</th><th>Food Type ID</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+            $eid = $row['eid'];
+            $fid = $row['fid'];
+
+            //echo $eid . " " . $name . " " . $price . "<br>"; 
+            echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$eid</td><td>$fid</td></tr>\n";
+        }
+        echo "</table>";
+    }
 } 
 else 
 {
