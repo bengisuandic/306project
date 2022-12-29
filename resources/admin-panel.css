@@ -3,6 +3,7 @@
 body { 
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(245, 236, 255, 0.356);
 }
 
 .header {
@@ -55,5 +56,42 @@ body {
 }
 
 .content{
-  margin: 2%;
+  margin-left: 30px;
+}
+
+img{
+  width: 40%;
+  border-radius: 10px;
+}
+
+.float{
+	position:fixed;
+	width:30%;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#9919d0;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.float:hover{
+  background-color:#a94bd2;
+}
+
+.my-float{
+	margin-top:18px;
+}
+
+.my-float a{
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+  min-width: 140px;
+  color:#FFF;
 }

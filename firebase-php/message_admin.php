@@ -41,7 +41,7 @@
 </table>
 
 
-<form method="POST" action="send_message.php?sender=client">
+<form method="POST" action="send_message.php?sender=admin">
  
   <div class="row" style="padding:3rem;">
     <div class="mb-3 col-sm-10">

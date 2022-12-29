@@ -13,10 +13,10 @@ $url_components = parse_url($url);
 // string passed via URL
 parse_str($url_components['query'], $params);
 
-if(isset($_POST['message']) && isset($_POST['sender']))
+if(isset($_POST['message']))
 {
     $message = $_POST['message'];
-    $sender = $_POST['sender'];
+    $sender = $params['sender'];
 
     $post_data = [
         'message'=> $message,
@@ -25,9 +25,9 @@ if(isset($_POST['message']) && isset($_POST['sender']))
     ];
     $ref_table = "messages";
     $postRef_result = $database->getReference($ref_table)->push($post_data);
+    header("Location: http://localhost/306project/firebase-php/message_client.php");
 }
  
-header("Location: http://localhost/firebase-php/index.php");
 exit();
 
 ?>
