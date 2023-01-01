@@ -35,13 +35,20 @@ $sql_statement = "SELECT * FROM located";
 $result = mysqli_query($db, $sql_statement);
 
 echo "<table>";
-echo "<tr><th>Venue ID</th><th>Workshop ID</th></tr>";
+echo "<tr><th>Venue ID</th><th>Venue Name</th><th>Workshop ID</th><th>Workshop Name</th></tr>";
 while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
-    $veid = $row['veid'];
+    //select from workshop db the associated workshop
     $wid = $row['wid'];
-
-    //echo $eid . " " . $name . " " . $price . "<br>"; 
-    echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$veid</td><td>$wid</td></tr>\n";
+    $sql_statement1 = "SELECT * FROM workshops WHERE wid = $wid";
+    $result1 = mysqli_query($db, $sql_statement1);
+    $wname = mysqli_fetch_assoc($result1)['name'];
+    //same for user
+    $veid = $row['veid'];
+    $sql_statement2 = "SELECT * FROM venues WHERE veid = $veid";
+    $result2 = mysqli_query($db, $sql_statement2);
+    $vname = mysqli_fetch_assoc($result2)['name'];
+    //print
+    echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$veid</td><td>$vname</td><td>$wid</td><td>$wname</td></tr>\n";
 }
 echo "</table>";
 

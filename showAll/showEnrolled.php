@@ -36,13 +36,20 @@ $sql_statement = "SELECT * FROM enrolled";
 $result = mysqli_query($db, $sql_statement);
 
 echo "<table>";
-echo "<tr><th>User ID</th><th>Worksop ID</th></tr>";
+echo "<tr><th>User ID</th><th>User Name</th><th>Worksop ID</th><th>Worksop Name</th></tr>";
 while ($row = mysqli_fetch_assoc($result)) { // Iterating the result
+    //select from workshop db the associated workshop
     $wid = $row['wid'];
+    $sql_statement1 = "SELECT * FROM workshops WHERE wid = $wid";
+    $result1 = mysqli_query($db, $sql_statement1);
+    $wname = mysqli_fetch_assoc($result1)['name'];
+    //same for user
     $uid = $row['uid'];
-
-    //echo $eid . " " . $name . " " . $price . "<br>"; 
-    echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$uid</td><td>$wid</td></tr>\n";
+    $sql_statement2 = "SELECT * FROM users WHERE uid = $uid";
+    $result2 = mysqli_query($db, $sql_statement2);
+    $uname = mysqli_fetch_assoc($result2)['name'];
+    //print
+    echo "<tr onmouseover=\"hilite(this)\" onmouseout=\"lowlite(this)\"><td>$uid</td><td>$uname</td><td>$wid</td><td>$wname</td></tr>\n";
 }
 echo "</table>";
 
