@@ -69,9 +69,11 @@ a{
 
 .select-button{
   margin: 2%;
+  margin-top: 30px;
 }
 
 .select-menu{
+  margin-top: 70px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
